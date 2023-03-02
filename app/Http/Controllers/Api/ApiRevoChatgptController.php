@@ -60,7 +60,7 @@ class ApiRevoChatgptController extends Controller
         }
 
         if ($request->type == 3) {
-            $this->revo->ask('generate presentation slide of maximum 300 words about : ' . $keywords . " it is first slide of presentation");
+            $this->revo->ask('generate an introductory presentation slide of maximum 250 words about : ' . $keywords);
         }
 
         $this->response['content'] = property_exists($this->revo->completetion(), 'text') ? $this->revo->completetion()->text : $this->revo->completetion();
