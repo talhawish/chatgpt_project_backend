@@ -234,8 +234,8 @@ class RevoChatgptController extends Controller
 
 
         try {
-            $result = $this->open_ai->completion([
 
+            $result = $this->open_ai->chat()->create([
                 "model" => "gpt-3.5-turbo",
                 "prompt" => $prompt,
                 'temperature' => 0.8,
@@ -244,10 +244,22 @@ class RevoChatgptController extends Controller
                 'presence_penalty' => 0,
                 'echo'  => false,
             ]);
+
+            dd($result);
+
+            // $result = $this->open_ai->completion([
+            //     "model" => "text-davinci-003",
+            //     "prompt" => $prompt,
+            //     'temperature' => 0.8,
+            //     'max_tokens' => 1000,
+            //     'frequency_penalty' => 0,
+            //     'presence_penalty' => 0,
+            //     'echo'  => false,
+            // ]);
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
-        dd($result);
+
 
         $choices = property_exists(json_decode($result), 'choices') ? json_decode($result)->choices[0] : "";
         $text = property_exists(json_decode($result), 'text') ? json_decode($result)->text : "";
