@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use OpenAI;
+use Orhanerday\OpenAi\OpenAi;
 
 class RevoChatgptController extends Controller
 {
@@ -17,9 +17,7 @@ class RevoChatgptController extends Controller
     {
         $open_ai_key = env('OPENAI_API_KEY');
 
-        // $this->open_ai = new OpenAi($open_ai_key);
-
-        $this->open_ai= OpenAI::client($open_ai_key);
+        $this->open_ai = new OpenAi($open_ai_key);
     }
 
     public function generatePost($data)
@@ -237,8 +235,9 @@ class RevoChatgptController extends Controller
 
         try {
 
-            $result = $this->open_ai->chat()->create([
-                "model" => "gpt-3.5-turbo",
+
+            $result = $this->open_ai->completion([
+                "model" => "text-davinci-003",
                 "prompt" => $prompt,
                 'temperature' => 0.8,
                 'max_tokens' => 1000,
@@ -246,18 +245,6 @@ class RevoChatgptController extends Controller
                 'presence_penalty' => 0,
                 'echo'  => false,
             ]);
-
-            dd($result);
-
-            // $result = $this->open_ai->completion([
-            //     "model" => "text-davinci-003",
-            //     "prompt" => $prompt,
-            //     'temperature' => 0.8,
-            //     'max_tokens' => 1000,
-            //     'frequency_penalty' => 0,
-            //     'presence_penalty' => 0,
-            //     'echo'  => false,
-            // ]);
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
