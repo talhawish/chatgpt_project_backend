@@ -112,7 +112,7 @@ class ApiRevoChatgptController extends Controller
         $this->bootstrap($request);
 
         $page = $request->page ?? 1;
-        $this->revo->ask('generate a presentation of 300 words about : ' . $keywords . ' its page ' . $page);
+        $this->revo->ask('generate a presentation slide of maximum 300 words about : ' . $keywords . ' it is slide number ' . $page . " of presentation");
 
         $this->response['content'] = property_exists($this->revo->completetion(), 'text') ? $this->revo->completetion()->text : $this->revo->completetion();
 
