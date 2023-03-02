@@ -247,7 +247,7 @@ class RevoChatgptController extends Controller
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
-
+        dd($result);
 
         $choices = property_exists(json_decode($result), 'choices') ? json_decode($result)->choices[0] : "";
         $text = property_exists(json_decode($result), 'text') ? json_decode($result)->text : "";
