@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Orhanerday\OpenAi\OpenAi;
+use OpenAI;
 
 class RevoChatgptController extends Controller
 {
@@ -19,7 +19,7 @@ class RevoChatgptController extends Controller
 
         // $this->open_ai = new OpenAi($open_ai_key);
 
-        $this->open_ai= OpenAI::client($yourApiKey)
+        $this->open_ai= OpenAI::client($open_ai_key);
     }
 
     public function generatePost($data)
