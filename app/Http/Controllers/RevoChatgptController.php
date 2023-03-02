@@ -422,7 +422,7 @@ class RevoChatgptController extends Controller
         if ($keyword != "") {
             # Load the data from Google via cURL
             $curl_handle = curl_init();
-            curl_setopt($curl_handle, CURLOPT_URL, "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=xlarge&q=" . urlencode($keyword));
+            curl_setopt($curl_handle, CURLOPT_URL, "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=xlarge&q=" . urlencode($keyword));
             curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
             $contents = curl_exec($curl_handle);
             curl_close($curl_handle);
@@ -450,7 +450,7 @@ class RevoChatgptController extends Controller
         $foundString             = -1;
         $stringExtractor_results = array();
 
-        # Extract  		
+        # Extract
         while ($foundString != 0) {
             $ini = strpos($string, $start, $cursor);
 

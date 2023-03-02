@@ -54,9 +54,6 @@ class AppServiceProvider extends ServiceProvider
             // return app(\Illuminate\Foundation\Mix::class)($path);
             // Using asset()
             // return asset($path);
-
-
-
         });
     }
 }
