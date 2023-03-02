@@ -17,7 +17,9 @@ class RevoChatgptController extends Controller
     {
         $open_ai_key = env('OPENAI_API_KEY');
 
-        $this->open_ai = new OpenAi($open_ai_key);
+        // $this->open_ai = new OpenAi($open_ai_key);
+
+        $this->open_ai= OpenAI::client($yourApiKey)
     }
 
     public function generatePost($data)
