@@ -236,7 +236,7 @@ class RevoChatgptController extends Controller
         try {
             $result = $this->open_ai->completion([
 
-                "model" => "text-davinci-003",
+                "model" => "gpt-3-5",
                 "prompt" => $prompt,
                 'temperature' => 0.8,
                 'max_tokens' => 1000,
